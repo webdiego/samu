@@ -42,23 +42,20 @@ const Carousel: React.FC<PropType> = ({ slides, options, images }) => {
       .on("reInit", onScroll)
       .on("scroll", onScroll)
       .on("slideFocus", onScroll);
-
-    return () => {
-      emblaApi
-        .off("reInit", onScroll)
-        .off("scroll", onScroll)
-        .off("slideFocus", onScroll);
-    };
   }, [emblaApi, onScroll]);
 
   return (
     <div className="embla">
       <div className="embla__viewport" ref={emblaRef}>
-        <div className="embla__container border ">
+        <div className="embla__container">
           {images.map((image, index) => (
             <div className="embla__slide" key={index}>
-              <div className=" embla__slide__number border ">
-                <img src={image.imgPath} alt="" />
+              <div className="embla__slide__number">
+                <img
+                  className="object-cover h-full"
+                  src={image.imgPath}
+                  alt=""
+                />
               </div>
             </div>
           ))}

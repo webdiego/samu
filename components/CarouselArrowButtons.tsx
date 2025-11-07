@@ -40,14 +40,8 @@ export const usePrevNextButtons = (
   useEffect(() => {
     if (!emblaApi) return;
 
-    // Evita setState sincrono nel render
-    requestAnimationFrame(() => onSelect(emblaApi));
-
-    emblaApi.on("reInit", onSelect);
-
-    return () => {
-      emblaApi.off("reInit", onSelect);
-    };
+    onSelect(emblaApi);
+    emblaApi.on("reInit", onSelect).on("select", onSelect);
   }, [emblaApi, onSelect]);
 
   return {
