@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { BlurIn } from "./BlurIn";
+import { BlurIn } from "./effects/BlurIn";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);

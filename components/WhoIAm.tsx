@@ -12,7 +12,7 @@ export default function WhoIAm() {
     <div
       ref={ref}
       id="whoiam"
-      className="bg-white max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 py-20 px-4"
+      className="bg-white max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 py-32 px-4"
     >
       <motion.div
         initial={{ opacity: 0, y: 20 }}
