@@ -8,8 +8,8 @@ export default function PersonalTraining() {
         className="absolute h-screen object-cover w-full "
         alt="hero"
       />
-      <div className=" absolute h-screen flex items-end justify-end text-white font-medium right-0 max-w-xl px-10 ">
-        <div className="backdrop-blur-lg p-10 mb-10 mr-10">
+      <div className="absolute h-screen flex items-end justify-end text-white font-medium right-0 max-w-xl mx-auto ">
+        <div className="backdrop-blur-lg py-10 px-5 mb-10 mx-5 md:mx-10">
           <p className="font-black uppercase mb-1">
             <span>|</span>PERSONAL TRAINER
           </p>
