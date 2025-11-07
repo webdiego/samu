@@ -31,6 +31,7 @@ export default function Hero() {
         src="/hero.jpg"
         className="absolute brightness-30"
         preload={true}
+        loading="eager"
         fill={true}
         objectFit="cover"
         alt="hero"
