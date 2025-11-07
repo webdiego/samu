@@ -28,7 +28,7 @@ export default function Result() {
       <div id="result" className="relative h-screen md:h-auto">
         <img
           src="/hero_2.jpg"
-          className="h-screen md:h-[50vh] object-cover w-full "
+          className="h-screen object-[65%_75%] md:object-center md:h-[50vh] object-cover w-full "
           alt="hero"
         />
         <div className="absolute bottom-10 md:top-20 left-0 flex items-start justify-start text-black font-medium max-w-lg ">
