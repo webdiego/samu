@@ -3,29 +3,7 @@ import Carousel from "./Carousel";
 import { EmblaOptionsType } from "embla-carousel";
 
 export default function PersonalTraining() {
-  const images = [
-    {
-      imgPath: "/hero.jpg",
-    },
-    {
-      imgPath: "/hero_1.jpg",
-    },
-    {
-      imgPath: "/hero_2.jpg",
-    },
-    {
-      imgPath: "/hero.jpg",
-    },
-    {
-      imgPath: "/hero_1.jpg",
-    },
-    {
-      imgPath: "/hero_2.jpg",
-    },
-  ];
-
   const OPTIONS: EmblaOptionsType = { dragFree: true };
-  const SLIDE_COUNT = images.length;
   const SLIDES = [
     {
       imgPath: "/hero.jpg",
@@ -80,8 +58,8 @@ export default function PersonalTraining() {
           </div>
         </div>
       </BlurIn>
-      <div className="max-w-4xl mx-auto py-20 px-4 space-y-5 text-sm">
-        <h3 className="font-semibold text-gray-700">
+      <div className="max-w-4xl mx-auto pt-20 px-4 space-y-5 text-sm">
+        <h3 className="font-bold text-gray-700 uppercase">
           Lorem ipsum dolor sit amet.
         </h3>
         <p>
@@ -101,7 +79,7 @@ export default function PersonalTraining() {
           <Carousel slides={SLIDES} options={OPTIONS} />
         </div>
       </div>
-      <div className="max-w-4xl mx-auto py-5 pb-20 px-4 space-y-5 text-sm grid grid-cols-1 md:grid-cols-2">
+      <div className="max-w-4xl mx-auto py-10 pb-20 px-4 space-y-5 text-sm grid grid-cols-1 md:grid-cols-2">
         <div>
           <h3 className="font-black text-4xl uppercase text-black">Lorem.</h3>
           <h3 className="font-black text-4xl uppercase text-black">Ipsum.</h3>

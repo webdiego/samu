@@ -6,7 +6,7 @@ import { motion, useInView } from "framer-motion";
 export default function WhoIAm() {
   const ref = React.useRef(null);
 
-  const isInView = useInView(ref);
+  const isInView = useInView(ref, { once: true });
 
   return (
     <div
