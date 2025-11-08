@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { SanityLive } from "@/sanity/lib/live";
+// import { SanityLive } from "@/sanity/lib/live";
 const inter = Inter({
   weight: ["400", "500", "600", "700", "800", "900"],
   subsets: ["latin"],
@@ -18,9 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={` ${inter.className} antialiased`}>
-        {children} <SanityLive />
-      </body>
+      <body className={` ${inter.className} antialiased`}>{children}</body>
     </html>
   );
 }

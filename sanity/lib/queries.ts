@@ -1,14 +1,29 @@
 import { defineQuery } from "next-sanity";
 
+// export const getPosts = defineQuery(`
+// *[_type == 'post'] | order(_createdAt desc) {
+//   'id': _id,
+//   title,
+//   content,
+//   'slug': slug.current,
+//   'image': image.asset->url,
+//   publishedAt,
+// }`);
 export const getPosts = defineQuery(`
-*[_type == 'post'] | order(_createdAt desc) {
-  'id': _id,
+*[_type == "post"] | order(_createdAt desc) {
+  _id,
+  _type,
+  _createdAt,
+  _updatedAt,
+  _rev,
   title,
-  content,
-  'slug': slug.current,
-  'image': image.asset->url,
+  intro,
+  slug,
   publishedAt,
-}`);
+  image,
+  content
+}
+`);
 
 export const getPost = defineQuery(`
 *[_type == 'post' && slug.current == $slug][0] {

@@ -68,15 +68,6 @@ export const blockContentType = defineType({
       ],
     }),
     defineArrayMember({
-      type: "file",
-      name: "fileAttachment",
-      title: "Attachment file",
-      fields: [
-        { name: "title", type: "string", title: "File title" },
-        { name: "description", type: "string", title: "Description" },
-      ],
-    }),
-    defineArrayMember({
       type: "object",
       name: "embedVideo",
       title: "Video",

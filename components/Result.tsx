@@ -31,12 +31,13 @@ export default function Result() {
           className="h-screen object-[65%_75%] md:object-center md:h-[50vh] object-cover w-full "
           alt="hero"
         />
-        <div className="absolute bottom-10 md:top-20 left-0 flex items-start justify-start text-black font-medium max-w-lg ">
-          <div className="backdrop-blur-lg py-10 px-5 mb-10 mx-4">
+
+        <div className="absolute bottom-10 md:top-20 left-0 lg:left-[calc((100vw-896px)/2)]  flex items-start justify-start text-black font-medium max-w-lg ">
+          <div className="backdrop-blur-2xl py-10 px-5 mb-10 mx-4">
             <p className="font-black uppercase mb-1">
               <span>|</span>RESULTS
             </p>
-            <div className="uppercase font-black text-4xl md:text-5xl leading-[30px] md:leading-10">
+            <div className="uppercase font-black text-4xl md:text-5xl leading-[30px] md:leading-10 ">
               <h2>Facts</h2>
               <h2>Only</h2>
             </div>

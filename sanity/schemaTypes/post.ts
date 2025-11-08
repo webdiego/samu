@@ -9,6 +9,13 @@ export const post = defineType({
       name: "title",
       title: "Title",
       type: "string",
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: "intro",
+      title: "Intro",
+      type: "string",
+      validation: (Rule) => Rule.required().min(40).max(80),
     }),
     defineField({
       name: "slug",
@@ -24,6 +31,7 @@ export const post = defineType({
       name: "publishedAt",
       title: "Published at",
       type: "datetime",
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "image",
@@ -33,11 +41,13 @@ export const post = defineType({
         hotspot: true,
       },
       fields: [{ name: "alt", type: "string", title: "Alt text" }],
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "content",
       title: "Content",
       type: "blockContent",
+      validation: (Rule) => Rule.required(),
     }),
   ],
 });
