@@ -5,6 +5,7 @@ import PersonalTraining from "@/components/PersonalTraining";
 import Footer from "@/components/Footer";
 import Result from "@/components/Result";
 import Booking from "@/components/Booking";
+import Posts from "@/components/Posts";
 export default function Home() {
   return (
     <div>
@@ -14,6 +15,7 @@ export default function Home() {
       <PersonalTraining />
       <Result />
       <Booking />
+      <Posts />
       <Footer />
     </div>
   );
