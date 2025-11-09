@@ -13,8 +13,25 @@ export default async function PostPage({
     params: { slug },
   });
   return post ? (
-    <div className="max-w-xl mx-auto py-10 px-4">
-      <TextBlock value={post.content} />
+    <div className="min-h-screen w-full  relative">
+      {/* Diagonal Fade Grid Background - Top Left */}
+      <div
+        className="absolute inset-0 -z-10 hidden sm:block md:w-1/2 h-screen"
+        style={{
+          backgroundImage: `
+      linear-gradient(to right, rgba(209, 213, 219, 0.3) 0.5px, transparent 0.5px),
+      linear-gradient(to bottom, rgba(209, 213, 219, 0.3) 0.5px, transparent 0.5px)
+    `,
+          backgroundSize: "32px 32px",
+          WebkitMaskImage:
+            "radial-gradient(ellipse 80% 80% at 0% 0%, #000 50%, transparent 90%)",
+          maskImage:
+            "radial-gradient(ellipse 80% 80% at 0% 0%, #000 50%, transparent 90%)",
+        }}
+      />
+      <div className="max-w-xl mx-auto py-10 pb-20 px-4 ">
+        <TextBlock value={post.content} />
+      </div>
     </div>
   ) : null;
 }
