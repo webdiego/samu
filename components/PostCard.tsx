@@ -15,10 +15,9 @@ export default function PostCard({ post }: PostCardProps) {
 
   const fmt = new Intl.DateTimeFormat("it-IT", {
     timeZone: "Europe/Rome",
-    year: "numeric",
-    month: "2-digit",
     day: "2-digit",
-    hour12: false,
+    month: "long",
+    year: "numeric",
   });
   return (
     <>

@@ -48,18 +48,6 @@ export type BlockContent = Array<{
   url?: string;
   _type: "embedVideo";
   _key: string;
-} | {
-  asset?: {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "sanity.fileAsset";
-  };
-  media?: unknown;
-  name?: string;
-  description?: string;
-  _type: "files";
-  _key: string;
 }>;
 
 export type Post = {
@@ -79,8 +67,8 @@ export type Post = {
       [internalGroqTypeReferenceTo]?: "sanity.fileAsset";
     };
     media?: unknown;
-    name?: string;
-    description?: string;
+    name: string;
+    description: string;
     _type: "file";
     _key: string;
   }>;
@@ -261,8 +249,8 @@ export type GetPostResult = {
   text: null;
   files: Array<{
     id: null;
-    name: string | null;
-    description: string | null;
+    name: string;
+    description: string;
     url: string | null;
   }> | null;
 } | null;

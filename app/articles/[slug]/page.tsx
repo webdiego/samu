@@ -12,7 +12,16 @@ export default async function PostPage({
     query: getPost,
     params: { slug },
   });
-  return post ? (
+  if (!post) return null;
+  const dt = new Date(post.publishedAt);
+
+  const fmt = new Intl.DateTimeFormat("it-IT", {
+    timeZone: "Europe/Rome",
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  });
+  return (
     <div className="min-h-screen w-full  relative">
       {/* Diagonal Fade Grid Background - Top Left */}
       <div
@@ -30,6 +39,9 @@ export default async function PostPage({
         }}
       />
       <div className="max-w-xl mx-auto py-10 pb-20 px-4 ">
+        <div className="-mb-5">
+          <p className="text-xs">{fmt.format(dt)}</p>
+        </div>
         <TextBlock value={post.content} />
         <div className="flex gap-2">
           {post.files &&
@@ -52,5 +64,5 @@ export default async function PostPage({
         </div>
       </div>
     </div>
-  ) : null;
+  );
 }
