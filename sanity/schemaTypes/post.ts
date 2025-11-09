@@ -27,6 +27,14 @@ export const post = defineType({
       },
       validation: (Rule) => Rule.required(),
     }),
+    // defineField({
+    //   name: "authors",
+    //   title: "Authors",
+    //   type: "array",
+    //   of: [{ type: "reference", to: [{ type: "author" }] }],
+    //   validation: (Rule) => Rule.required().min(1),
+    // }),
+
     defineField({
       name: "publishedAt",
       title: "Published at",
