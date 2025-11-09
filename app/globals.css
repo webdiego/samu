@@ -118,7 +118,8 @@
     @apply bg-background text-foreground;
   }
 }
-html {
+
+html[data-scroll-behavior="smooth"] {
   scroll-behavior: smooth;
   scroll-padding-top: 40px;
 }
