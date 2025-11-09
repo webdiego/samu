@@ -5,7 +5,6 @@ import { Download } from "lucide-react";
 import Image from "next/image";
 import imageUrlBuilder from "@sanity/image-url";
 import { client } from "@/sanity/lib/client";
-import { author } from "@/sanity/schemaTypes/author";
 
 const builder = imageUrlBuilder(client);
 
@@ -30,7 +29,7 @@ export default async function PostPage({
     year: "numeric",
   });
   return (
-    <div className="min-h-screen w-full  relative">
+    <div className="min-h-screen w-full relative">
       {/* Diagonal Fade Grid Background - Top Left */}
       <div
         className="absolute inset-0 -z-10 hidden sm:block md:w-1/2 h-screen"
@@ -48,7 +47,7 @@ export default async function PostPage({
       />
       <div className="max-w-xl mx-auto py-10 pb-20 px-4 ">
         <div className="-mb-5 flex justify-between">
-          <div className="flex items-end -space-x-1 overflow-hidden">
+          <div className="flex items-start -space-x-1 overflow-hidden">
             {post.authors?.map((auth, i) => {
               return (
                 <div key={i}>
@@ -76,7 +75,7 @@ export default async function PostPage({
               </div>
             </div>
           </div>
-          <p className="text-xs text-gray-800">{fmt.format(dt)}</p>
+          <p className="text-xs text-gray-800 self-end">{fmt.format(dt)}</p>
         </div>
         <TextBlock value={post.content} />
         <div className="flex gap-2">
@@ -98,6 +97,35 @@ export default async function PostPage({
               </a>
             ))}
         </div>
+        {/* BOTTOM AUTHORS */}
+        {/* <div className="flex mt-5 items-start -space-x-1 overflow-hidden">
+          {post.authors?.map((auth, i) => {
+            return (
+              <div key={i}>
+                <Image
+                  priority
+                  src={builder.image(auth.image).url()}
+                  alt={post.title}
+                  width={140}
+                  height={140}
+                  className="inline-block size-7 rounded-full ring-[3px] object-cover"
+                />
+              </div>
+            );
+          })}
+          <div className="flex flex-col ml-3 text-xs">
+            <p className=" text-xs">Authors:</p>
+            <div className="grid grid-cols-2 gap-2 divide-x-2">
+              {post.authors?.map((auth, i) => {
+                return (
+                  <div key={i}>
+                    <p>{auth.name}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div> */}
       </div>
     </div>
   );

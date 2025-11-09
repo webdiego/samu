@@ -1,14 +1,14 @@
 import { client } from "@/sanity/lib/client";
 import imageUrlBuilder from "@sanity/image-url";
 import Image from "next/image";
-import { type Post } from "@/sanity/types";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Calendar } from "lucide-react";
+import { type GetPostsResult } from "@/sanity/types";
 const builder = imageUrlBuilder(client);
 
 interface PostCardProps {
-  post: Post;
+  post: GetPostsResult[number];
 }
 export default function PostCard({ post }: PostCardProps) {
   const dt = new Date(post.publishedAt);

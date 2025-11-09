@@ -1,7 +1,6 @@
 import { getPosts } from "@/sanity/lib/queries";
 import { sanityFetch } from "@/sanity/lib/live";
 import PostCard from "@/components/PostCard";
-import { type Post } from "@/sanity/types";
 
 export default async function Posts() {
   const { data: posts } = await sanityFetch({
@@ -49,8 +48,8 @@ export default async function Posts() {
 
           {/* Griglia */}
           <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {posts.map((post: Post) => (
-              <PostCard key={post._id} post={post as Post} />
+            {posts.map((post) => (
+              <PostCard key={post._id} post={post} />
             ))}
           </div>
         </div>
