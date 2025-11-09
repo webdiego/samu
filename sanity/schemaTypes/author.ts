@@ -1,4 +1,3 @@
-// schemas/author.ts
 import { defineType, defineField } from "sanity";
 
 export const author = defineType({
@@ -22,6 +21,7 @@ export const author = defineType({
       title: "Image",
       type: "image",
       options: { hotspot: true },
+      validation: (Rule) => Rule.required(),
     }),
   ],
 });

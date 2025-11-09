@@ -4,7 +4,6 @@ import Link from "next/link";
 import { PortableText, PortableTextComponents } from "@portabletext/react";
 import { urlFor } from "@/sanity/lib/image";
 import type { PortableTextBlock } from "sanity";
-// import { getFileUrl } from "@/lib/sanity"; // funzione helper
 
 interface VideoValue {
   url?: string;

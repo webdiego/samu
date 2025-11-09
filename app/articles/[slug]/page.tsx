@@ -2,6 +2,13 @@ import TextBlock from "@/components/TextBlock";
 import { getPost } from "@/sanity/lib/queries";
 import { sanityFetch } from "@/sanity/lib/live";
 import { Download } from "lucide-react";
+import Image from "next/image";
+import imageUrlBuilder from "@sanity/image-url";
+import { client } from "@/sanity/lib/client";
+import { author } from "@/sanity/schemaTypes/author";
+
+const builder = imageUrlBuilder(client);
+
 export default async function PostPage({
   params,
 }: {
@@ -12,6 +19,7 @@ export default async function PostPage({
     query: getPost,
     params: { slug },
   });
+
   if (!post) return null;
   const dt = new Date(post.publishedAt);
 
@@ -39,8 +47,36 @@ export default async function PostPage({
         }}
       />
       <div className="max-w-xl mx-auto py-10 pb-20 px-4 ">
-        <div className="-mb-5">
-          <p className="text-xs">{fmt.format(dt)}</p>
+        <div className="-mb-5 flex justify-between">
+          <div className="flex items-end -space-x-1 overflow-hidden">
+            {post.authors?.map((auth, i) => {
+              return (
+                <div key={i}>
+                  <Image
+                    priority
+                    src={builder.image(auth.image).url()}
+                    alt={post.title}
+                    width={140}
+                    height={140}
+                    className="inline-block size-7 rounded-full ring-[3px] object-cover"
+                  />
+                </div>
+              );
+            })}
+            <div className="flex flex-col ml-3 text-xs">
+              <p className=" text-xs">Authors:</p>
+              <div className="grid grid-cols-2 gap-2 divide-x-2">
+                {post.authors?.map((auth, i) => {
+                  return (
+                    <div key={i}>
+                      <p>{auth.name}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+          <p className="text-xs text-gray-800">{fmt.format(dt)}</p>
         </div>
         <TextBlock value={post.content} />
         <div className="flex gap-2">

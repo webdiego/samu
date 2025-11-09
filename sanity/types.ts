@@ -13,6 +13,28 @@
  */
 
 // Source: schema.json
+export type Author = {
+  _id: string;
+  _type: "author";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name: string;
+  bio?: string;
+  image: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+};
+
 export type BlockContent = Array<{
   children?: Array<{
     marks?: Array<string>;
@@ -59,19 +81,6 @@ export type Post = {
   title: string;
   intro: string;
   slug: Slug;
-  files?: Array<{
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.fileAsset";
-    };
-    media?: unknown;
-    name: string;
-    description: string;
-    _type: "file";
-    _key: string;
-  }>;
   publishedAt: string;
   image: {
     asset?: {
@@ -87,6 +96,26 @@ export type Post = {
     _type: "image";
   };
   content: BlockContent;
+  authors?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "author";
+  }>;
+  files?: Array<{
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.fileAsset";
+    };
+    media?: unknown;
+    name: string;
+    description: string;
+    _type: "file";
+    _key: string;
+  }>;
 };
 
 export type SanityImagePaletteSwatch = {
@@ -207,11 +236,11 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = BlockContent | Post | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = Author | BlockContent | Post | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: sanity/lib/queries.ts
 // Variable: getPosts
-// Query: *[_type == "post"] | order(_createdAt desc) {  _id,  _type,  _createdAt,  _updatedAt,  _rev,  title,  intro,  slug,  publishedAt,  image,  content}
+// Query: *[_type == "post"] | order(_createdAt desc) {  _id,  _type,  _createdAt,  _updatedAt,  _rev,  title,  intro,  slug,  publishedAt,  image,  content,  "authors": authors[]->{    _id,    name,    image,    bio  },}
 export type GetPostsResult = Array<{
   _id: string;
   _type: "post";
@@ -236,9 +265,26 @@ export type GetPostsResult = Array<{
     _type: "image";
   };
   content: BlockContent;
+  authors: Array<{
+    _id: string;
+    name: string;
+    image: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      _type: "image";
+    };
+    bio: string | null;
+  }> | null;
 }>;
 // Variable: getPost
-// Query: *[_type == 'post' && slug.current == $slug][0] {  'id': _id,  title,  content,  'slug': slug.current,  'image': image.asset->url,  publishedAt,  text,  files[]{   'id': _id,    name,    description,    'url': asset->url  }}
+// Query: *[_type == 'post' && slug.current == $slug][0] {  'id': _id,  title,  content,  'slug': slug.current,  'image': image.asset->url,  publishedAt,  text,  files[]{   'id': _id,    name,    description,    'url': asset->url  },  "authors": authors[]->{   'id': _id,    name,    image,    bio  },}
 export type GetPostResult = {
   id: string;
   title: string;
@@ -253,13 +299,30 @@ export type GetPostResult = {
     description: string;
     url: string | null;
   }> | null;
+  authors: Array<{
+    id: string;
+    name: string;
+    image: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      _type: "image";
+    };
+    bio: string | null;
+  }> | null;
 } | null;
 
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "\n*[_type == \"post\"] | order(_createdAt desc) {\n  _id,\n  _type,\n  _createdAt,\n  _updatedAt,\n  _rev,\n  title,\n  intro,\n  slug,\n  publishedAt,\n  image,\n  content\n}\n": GetPostsResult;
-    "\n*[_type == 'post' && slug.current == $slug][0] {\n  'id': _id,\n  title,\n  content,\n  'slug': slug.current,\n  'image': image.asset->url,\n  publishedAt,\n  text,\n  files[]{\n   'id': _id,\n    name,\n    description,\n    'url': asset->url\n  }\n}": GetPostResult;
+    "\n*[_type == \"post\"] | order(_createdAt desc) {\n  _id,\n  _type,\n  _createdAt,\n  _updatedAt,\n  _rev,\n  title,\n  intro,\n  slug,\n  publishedAt,\n  image,\n  content,\n  \"authors\": authors[]->{\n    _id,\n    name,\n    image,\n    bio\n  },\n}\n": GetPostsResult;
+    "\n*[_type == 'post' && slug.current == $slug][0] {\n  'id': _id,\n  title,\n  content,\n  'slug': slug.current,\n  'image': image.asset->url,\n  publishedAt,\n  text,\n  files[]{\n   'id': _id,\n    name,\n    description,\n    'url': asset->url\n  },\n  \"authors\": authors[]->{\n   'id': _id,\n    name,\n    image,\n    bio\n  },\n}": GetPostResult;
   }
 }

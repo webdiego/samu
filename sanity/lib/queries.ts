@@ -21,7 +21,13 @@ export const getPosts = defineQuery(`
   slug,
   publishedAt,
   image,
-  content
+  content,
+  "authors": authors[]->{
+    _id,
+    name,
+    image,
+    bio
+  },
 }
 `);
 
@@ -39,7 +45,13 @@ export const getPost = defineQuery(`
     name,
     description,
     'url': asset->url
-  }
+  },
+  "authors": authors[]->{
+   'id': _id,
+    name,
+    image,
+    bio
+  },
 }`);
 
 // export const getCategories = defineQuery(`
