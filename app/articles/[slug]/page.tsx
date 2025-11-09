@@ -28,6 +28,7 @@ export default async function PostPage({
     month: "long",
     year: "numeric",
   });
+
   return (
     <div className="min-h-screen w-full relative">
       {/* Diagonal Fade Grid Background - Top Left */}
@@ -46,7 +47,7 @@ export default async function PostPage({
         }}
       />
       <div className="max-w-xl mx-auto py-10 pb-20 px-4 ">
-        <div className="-mb-5 flex justify-between">
+        <div className="mt-10 flex flex-col ">
           <div className="flex items-start -space-x-1 overflow-hidden">
             {post.authors?.map((auth, i) => {
               return (
@@ -62,22 +63,26 @@ export default async function PostPage({
                 </div>
               );
             })}
-            <div className="flex flex-col ml-3 text-xs">
-              <p className=" text-xs">Authors:</p>
-              <div className="grid grid-cols-2 gap-2 divide-x-2">
-                {post.authors?.map((auth, i) => {
-                  return (
-                    <div key={i}>
-                      <p>{auth.name}</p>
-                    </div>
-                  );
-                })}
-              </div>
+          </div>
+          <div className="flex flex-col text-xs mt-1 mb-2">
+            <p className=" text-xs font-semibold">Authors:</p>
+            <div className="flex divide-x divide-gray-400">
+              {post.authors?.map((auth, i) => {
+                return (
+                  <div key={i} className="px-1 first:pl-0">
+                    <p>{auth.name}</p>
+                  </div>
+                );
+              })}
             </div>
           </div>
-          <p className="text-xs text-gray-800 self-end">{fmt.format(dt)}</p>
         </div>
+        <div className="mb-5 flex ">
+          <p className="text-xs text-gray-600 self-end">{fmt.format(dt)}</p>
+        </div>
+
         <TextBlock value={post.content} />
+        {/* FILES */}
         <div className="flex gap-2">
           {post.files &&
             post.files.length > 0 &&
@@ -97,35 +102,6 @@ export default async function PostPage({
               </a>
             ))}
         </div>
-        {/* BOTTOM AUTHORS */}
-        {/* <div className="flex mt-5 items-start -space-x-1 overflow-hidden">
-          {post.authors?.map((auth, i) => {
-            return (
-              <div key={i}>
-                <Image
-                  priority
-                  src={builder.image(auth.image).url()}
-                  alt={post.title}
-                  width={140}
-                  height={140}
-                  className="inline-block size-7 rounded-full ring-[3px] object-cover"
-                />
-              </div>
-            );
-          })}
-          <div className="flex flex-col ml-3 text-xs">
-            <p className=" text-xs">Authors:</p>
-            <div className="grid grid-cols-2 gap-2 divide-x-2">
-              {post.authors?.map((auth, i) => {
-                return (
-                  <div key={i}>
-                    <p>{auth.name}</p>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div> */}
       </div>
     </div>
   );
