@@ -29,7 +29,8 @@ export default async function PostPage({
     year: "numeric",
   });
 
-  const authorsLength = post.authors.length;
+  const authorsLength = post.authors?.length ?? 0;
+  console.log(authorsLength);
   return (
     <div className="min-h-screen w-full relative">
       {/* Diagonal Fade Grid Background - Top Left */}
