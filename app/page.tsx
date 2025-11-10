@@ -1,10 +1,10 @@
-import Hero from "@/components/Hero";
-import WhoIAm from "@/components/WhoIAm";
-import PersonalTraining from "@/components/PersonalTraining";
-import Footer from "@/components/Footer";
-import Result from "@/components/Result";
-import Booking from "@/components/Booking";
-import Posts from "@/components/Posts";
+import Hero from "@/components/sections/Hero";
+import WhoIAm from "@/components/sections/WhoIAm";
+import PersonalTraining from "@/components/sections/PersonalTraining";
+import Footer from "@/components/sections/Footer";
+import Result from "@/components/sections/Result";
+import Booking from "@/components/sections/Booking";
+import Posts from "@/components/sections/Posts";
 export default function Home() {
   return (
     <div>

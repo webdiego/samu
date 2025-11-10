@@ -1,5 +1,5 @@
-import { BlurIn } from "./effects/BlurIn";
-import Carousel from "./Carousel";
+import { BlurIn } from "@/components/effects/BlurIn";
+import Carousel from "@/components/Carousel";
 import { EmblaOptionsType } from "embla-carousel";
 
 export default function PersonalTraining() {

@@ -601,7 +601,7 @@
             }
           }
         },
-        "optional": true
+        "optional": false
       },
       "files": {
         "type": "objectAttribute",

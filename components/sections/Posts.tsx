@@ -1,6 +1,6 @@
 import { getPosts } from "@/sanity/lib/queries";
 import { sanityFetch } from "@/sanity/lib/live";
-import PostCard from "./PostCard";
+import PostCard from "../PostCard";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 

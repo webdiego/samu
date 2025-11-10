@@ -57,6 +57,7 @@ export const post = defineType({
       name: "authors",
       title: "Authors",
       type: "array",
+      validation: (Rule) => Rule.required().min(1),
       of: [{ type: "reference", to: [{ type: "author" }] }],
     }),
     defineField({

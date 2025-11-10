@@ -29,6 +29,7 @@ export default async function PostPage({
     year: "numeric",
   });
 
+  const authorsLength = post.authors.length;
   return (
     <div className="min-h-screen w-full relative">
       {/* Diagonal Fade Grid Background - Top Left */}
@@ -65,9 +66,11 @@ export default async function PostPage({
             })}
           </div>
           <div className="flex flex-col text-xs mt-1 mb-2">
-            <p className=" text-xs font-semibold">Authors:</p>
+            <p className=" text-xs font-semibold">
+              {authorsLength > 1 ? "Authors" : "Author"}:
+            </p>
             <div className="flex divide-x divide-gray-400">
-              {post.authors?.map((auth, i) => {
+              {post.authors.map((auth, i) => {
                 return (
                   <div key={i} className="px-1 first:pl-0">
                     <p>{auth.name}</p>

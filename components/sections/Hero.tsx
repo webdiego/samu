@@ -1,7 +1,7 @@
-import { Button } from "./ui/button";
+import { Button } from "@/components/ui/button";
 import { Medal, Sprout, Activity, Blocks } from "lucide-react";
-import { TextFadeIn } from "./effects/TextFadeIn";
-import { BlurIn } from "./effects/BlurIn";
+import { TextFadeIn } from "@/components/effects/TextFadeIn";
+import { BlurIn } from "@/components/effects/BlurIn";
 import Link from "next/link";
 
 const highlights = [

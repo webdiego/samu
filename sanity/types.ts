@@ -96,7 +96,7 @@ export type Post = {
     _type: "image";
   };
   content: BlockContent;
-  authors?: Array<{
+  authors: Array<{
     _ref: string;
     _type: "reference";
     _weak?: boolean;
@@ -281,7 +281,7 @@ export type GetPostsResult = Array<{
       _type: "image";
     };
     bio: string | null;
-  }> | null;
+  }>;
 }>;
 // Variable: getPost
 // Query: *[_type == 'post' && slug.current == $slug][0] {  'id': _id,  title,  content,  'slug': slug.current,  'image': image.asset->url,  publishedAt,  text,  files[]{   'id': _id,    name,    description,    'url': asset->url  },  "authors": authors[]->{   'id': _id,    name,    image,    bio  },}
@@ -315,7 +315,7 @@ export type GetPostResult = {
       _type: "image";
     };
     bio: string | null;
-  }> | null;
+  }>;
 } | null;
 
 // Query TypeMap

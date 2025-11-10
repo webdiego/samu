@@ -1,6 +1,6 @@
 "use client";
 import * as React from "react";
-import { Button } from "./ui/button";
+import { Button } from "@/components/ui/button";
 import { motion, useInView } from "framer-motion";
 
 export default function WhoIAm() {
