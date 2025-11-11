@@ -37,7 +37,9 @@ export default function Contact() {
               </div>
               <div>
                 <p className="font-semibold">Phone</p>
-                <a href="tel:+391234567890">44404444</a>
+                <a href="tel:+391234567890" className="text-sm">
+                  44404444
+                </a>
               </div>
             </div>
             <div className="flex gap-3">
@@ -46,7 +48,9 @@ export default function Contact() {
               </div>
               <div>
                 <p className="font-semibold">Email</p>
-                <a href="mailto:info@example.com">s@gmail.com</a>
+                <a href="mailto:info@example.com" className="text-sm">
+                  s@gmail.com
+                </a>
               </div>
             </div>
           </div>
